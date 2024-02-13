@@ -1,0 +1,150 @@
+body {
+  margin: 0;
+  padding: 0;
+  /* opacity:0.5; */
+  /* background-image: url(../images/welcome.jpg); */
+  background-image: linear-gradient(rgba(231, 219, 219, 0.062), rgba(221, 212, 212, 0.11)), url(../images/bg2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  /* max-height: 80vh; */
+}
+
+/* Header styles */
+header {
+
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 55, 71, 0.678);
+  
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+}
+
+#logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+#app-name {
+  font-weight: bold;
+  font-size: 35px;
+  padding: 1rem;
+}
+    .registration-info {
+      display: flex;
+      /* opacity:0.5; */
+      flex-direction: row; /* Updated to display horizontally */
+      gap: 80px;
+      position: absolute;
+      right: 26rem;
+      top: 23rem; /* Adjust the gap between label containers */
+
+    }
+    .reglabel1{
+      position: absolute;
+      left: 8rem;
+      top: 4rem;
+      font-weight: bold;
+      font-size: 4rem;
+      color:#ffffff
+    }
+    .reglabel2{
+      position: absolute;
+      font-weight: bold;
+      font-size: 4rem;
+      left: 35rem;
+      top: 4rem;
+      color:#ffffff
+    }
+    .reglabel3{
+      position: absolute;
+      font-weight: bold;
+      font-size:4rem;
+      right: 2rem;
+      top: 4rem;
+      color:#ffffff
+    }
+
+    .label-container1{
+      /* opacity: 0.8; */
+      display: flex;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      width: 23rem; /* Adjust the width as needed */
+      height: 12rem; /* Adjust the height as needed */
+      align-items: center;
+      box-shadow: 0 0 20rem  rgba(5, 67, 109, 0.8);
+  background: rgba(5, 67, 109, 0.8); 
+  border-radius: 1rem;
+      
+  }
+
+    label {
+      margin-right: 10px;
+  }
+  .label-container2{
+    /* opacity: 0.8; */
+      display: flex;
+      align-items: center;
+      background-color:rgb(0, 27, 146);
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      width: 23rem; /* Adjust the width as needed */
+      height: 12rem; /* Adjust the height as needed */
+      box-shadow: 0 0 20rem  rgba(5, 67, 109, 0.8);
+      background: rgba(5, 67, 109, 0.8); 
+      border-radius: 1rem;
+    }
+
+    label {
+      margin-right: 10px;
+  }
+  
+  .label-container3{
+    /* opacity: 0.8; */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color:rgb(0, 27, 146);
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      width: 23rem; /* Adjust the width as needed */
+      height: 12rem; /* Adjust the height as needed */
+      box-shadow: 0 0 20rem  rgba(5, 67, 109, 0.8);
+      background: rgba(5, 67, 109, 0.8); 
+      border-radius: 1rem;
+    }
+
+    label {
+      margin-right: 10px;
+  }
+  .text1 {
+    font-style: bold;
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+    font-size: 20px;
+    padding: 0;
+    color:#ffffffa4;
+    font-weight: bolder;
+    /* text-shadow: 1px 1px 0 #c2b6b6, 
+                     2px 2px 0 #aaa0a0;   */
+  }
+  .logo1 {
+    position: absolute;
+    bottom: 2rem;
+    right: 3rem;
+    width: 5rem;
+    height: 5rem;
+  }

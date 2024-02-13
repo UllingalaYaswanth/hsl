@@ -1,0 +1,199 @@
+body
+{
+    /* display: flex; */
+    margin-top:20;
+    padding: 0;
+    background-image:url(../images/bg2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    max-height: 80vh; /* Ensures the body takes up the full height of the viewport */
+  
+      background-attachment: fixed;
+      background-size: cover;
+}
+    
+    html {
+      height: 100%;
+    }
+
+
+header { 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Adjust the z-index as needed to ensure the header appears above other elements */
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 55, 71, 0.678);
+
+  }
+  #logo {
+    display: flex;
+    align-items: center;
+  }
+
+  #logo img {
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  #app-name {
+    font-size: 35px;
+    padding: 1rem;
+    color: rgb(237, 237, 242);
+    
+    font-weight: bold;
+
+  }
+  body {
+    margin-top: 8rem; /* Adjust the value based on the height of your header */
+}
+
+form {
+    max-width: 55rem;
+    margin: 0 auto;
+    padding: 50px;
+    box-shadow: 0 0 20rem rgb(2, 44, 133);
+    background: rgba(48, 90, 145, 0.678);
+    border-radius: 1rem;
+    position: relative;
+    top: 20px; /* Adjust the value to control the vertical spacing */
+}
+
+
+  .h1
+  {
+      font-size: 3rem;
+      text-align: center;
+      color: #ecedf4;
+  } 
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: rgb(248, 247, 251);
+    font-size:23px;
+  }
+  
+  input[type="text"],
+  input[type="email"],  
+  select,
+  textarea {
+    width: 20rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;  
+  }
+  
+  input[type="radio"],
+  input[type="date"] {
+    margin-right: 10px;  
+  }
+  
+  input[type="submit"] {
+    display: block;
+    margin-top: 50px;
+    left: 100px;
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background: #0062cc;
+  }
+
+  
+  input[type="radio"] {
+    margin-right: 10px; 
+    margin-bottom:8px ;
+  }
+  
+  div {
+    display: flex;
+    align-items: center;
+  }
+  .image-container {
+    position: relative;
+  }
+  
+  #display-image {
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+  
+    left: 40rem;
+
+  }
+
+  
+  input[type="file"] {
+    color: #fff;
+  }
+  .success-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  #camera-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  #camera-feed {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    height: 20rem;
+    width:20rem;
+    transform: translate(-50%, -50%);
+  }
+
+  #capture-buttons {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0px;
+  }
+  #previewButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    right: 9rem;
+    top: 84rem;
+  }
+
+  #previewButton:hover {
+    background-color: #45a049;
+  }

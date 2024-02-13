@@ -1,0 +1,99 @@
+body
+{
+    /* display: flex; */
+    margin-top:6.5rem;
+    padding: 0;
+    background-image:url(../images/bg2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    max-height: 80vh; /* Ensures the body takes up the full height of the viewport */
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+    #app-name {
+        font-size: 35px;
+        padding: 1rem;
+        color: rgb(237, 237, 242);
+        font-weight: bold;
+    
+      }
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Adjust the z-index as needed to ensure the header appears above other elements */
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 55, 71, 0.678);
+
+  }
+  #logo {
+    display: flex;
+    align-items: center;
+  }
+
+  #logo img {
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  
+  section {
+    max-width: 35rem;
+    margin: 10px auto;
+    padding: 1px 1px 20px 15px;
+    background-color: #ffffffdc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 40rem;
+    border-radius: 1rem;
+  }
+  h1 {
+    color: #000000;
+    text-align: center;
+    font-size:38px;
+  }
+  
+  p {
+    margin: 25px 0;
+  }
+  
+  #backbutton {
+    background-color: #0d5e94;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 3rem;
+  }
+  
+  #backbutton:hover {
+    background-color: #1f73aa;
+  }
+  
+#submitbutton {
+    background-color: #029010;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 2rem;
+    right: 31rem;
+  }
+  
+#submitbutton:hover {
+    background-color: #15a223;
+  }

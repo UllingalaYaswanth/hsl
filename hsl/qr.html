@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Display</title>
+    <link rel="stylesheet" href="../styles/qr.css">
+    
+    <!-- Include the qrcode.js library -->
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+</head>
+
+<body>
+    <div id="employeeContainer"></div>
+        <h1 id="employeeName">Employee Name</h1>
+        <div id="qrcode"></div>
+        <button id="printButton">Print</button>
+
+    <script>
+    // Function to get the value of a query parameter from the URL
+    function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Get the QR code data from the query parameter
+    const qrCodeData = getQueryParam('qrcode');
+
+    // Check if the QR code data is available
+    if (qrCodeData) {
+        // Parse the QR code data to extract employee information
+        const employeeInfo = parseEmployeeInfo(qrCodeData);
+
+        // Set the employee's name dynamically in the h1 tag
+        const employeeNameElement = document.getElementById('employeeName');
+        employeeNameElement.textContent = `${employeeInfo.firstName} ${employeeInfo.lastName}`;
+
+        // Create a new instance of QRCode
+        const qrcode = new QRCode(document.getElementById('qrcode'), {
+            text: decodeURIComponent(qrCodeData),
+            width: 500,
+            height: 500,
+        });
+
+        // Add event listener to the Print button
+        const printButton = document.getElementById('printButton');
+        printButton.addEventListener('click', function () {
+            // Call the window.print() function to print the content
+            window.print();
+        });
+
+    } else {
+        // Handle the case where the QR code data is missing
+        const errorMessage = document.createElement('p');
+        errorMessage.textContent = 'QR Code data is missing.';
+        errorMessage.classList.add('error-message');
+        document.body.appendChild(errorMessage);
+    }
+
+    // Function to parse the employee information from QR code data
+    function parseEmployeeInfo(qrCodeData) {
+        const firstNameMatch = qrCodeData.match(/First%20Name:%20(.+?)%0ALast%20Name/);
+        const lastNameMatch = qrCodeData.match(/Last%20Name:%20(.+?)%0AEmpId/);
+
+        const firstName = firstNameMatch ? decodeURIComponent(firstNameMatch[1]) : 'Unknown';
+        const lastName = lastNameMatch ? decodeURIComponent(lastNameMatch[1]) : 'Unknown';
+
+        return {
+            firstName: firstName,
+            lastName: lastName,
+        };
+    }
+</script>
+</body>
+
+</html>

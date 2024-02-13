@@ -1,0 +1,60 @@
+body{
+    background-image: linear-gradient(rgba(247, 244, 244, 0.123), rgba(241, 236, 236, 0.062)), url(../images/bg2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.heading{
+    position: absolute;
+    right: 60rem;
+    top: 10rem;
+}
+#qrcode{
+    position: absolute;
+    top: 18rem;
+    right: 45rem;
+    margin: "20px";
+}
+#employeeName{
+    position: absolute;
+    left: 46rem;
+    top: 12rem;
+    color: white;
+}
+@media print {
+    body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0; /* Reset default margin */
+    }
+}
+#printButton{
+    position: absolute;
+    padding: 12px;
+    bottom: 6rem;
+    right: 58rem;
+    background-color: rgb(33, 33, 241);
+    color: white;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+#employeeContainer{
+    position: absolute;
+    background-color: rgba(48, 90, 145, 0.678);
+    width: 50rem;
+    height: 50rem;
+    top: 7rem;
+    left: 30rem;
+    border-radius: 3rem;
+
+}
+.error-message{
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    top: 30rem;
+    left: 47rem;
+}

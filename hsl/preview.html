@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Page</title>
+  <link rel="stylesheet" href="../styles/preview.css">
+</head>
+
+<header>
+    <div id="header-bar">
+      <div id="logo">
+        <img src="../hsl-logo.png" alt="Logo">
+        <div id="app-name">HINDUSTAN SHIPYARD LIMITED</div>
+      </div>
+    </div>
+  </header>
+  
+<body>
+  <section>
+    <!-- <form id="registration-form" action="../api/preview.php"></form> -->
+    <h1>Employee Registration Preview</h1>
+
+    <p><strong>First Name:</strong> <span id="previewFirstName"></span></p>
+    <p><strong>Last Name:</strong> <span id="previewLastName"></span></p>
+    <p><strong>Employee ID:</strong> <span id="previewEmpId"></span></p>
+    <p><strong>Department:</strong> <span id="previewDepartment"></span></p>
+    <p><strong>Aadhar Card No. :</strong> <span id="previewAadharCardNo."></span></p>
+    <p><strong>Address:</strong> <span id="previewAddress"></span></p>
+    <p><strong>Gender:</strong> <span id="previewGender"></span></p>
+    <p><strong>Date of Birth:</strong> <span id="previewDateofBirth"></span></p>
+    <p><strong>Mobile Number:</strong> <span id="previewMobileNumber"></span></p>
+    <p><strong>Email:</strong> <span id="previewEmail"></span></p>
+    <p><strong>Blood Group:</strong> <span id="previewBloodGroup"></span></p>
+    <!-- Add similar sections for other details -->
+    <button type="button" id="backbutton" onclick="location.href='../hsl/HSL_form.html'">Back</button>
+        <!-- <button type="submit" id="submitbutton" onclick=<a href="registration.html">Submit</button> -->
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Retrieve data from the query parameters
+      const params = new URLSearchParams(window.location.search);
+      const firstName = params.get('firstName');
+      const lastName = params.get('lastName');
+      const empId = params.get('empId');
+      const department = params.get('department');
+      const aadhar = params.get('aadhar');
+      const address = params.get('address');
+      const gender = params.get('gender');
+      const dob = params.get('dob');
+      const mobile = params.get('mobile');
+      const email = params.get('email');
+      const bloodGroup = params.get('bloodGroup');
+  
+  
+      // Update the preview content
+      document.getElementById('previewFirstName').textContent = firstName;
+      document.getElementById('previewLastName').textContent = lastName;
+      document.getElementById('previewEmpId').textContent = empId;
+      document.getElementById('previewDepartment').textContent = department;
+      document.getElementById('previewAadharCardNo.').textContent = aadhar;
+      document.getElementById('previewAddress').textContent = address;
+      document.getElementById('previewGender').textContent = gender;
+      document.getElementById('previewDateofBirth').textContent = dob;
+      document.getElementById('previewMobileNumber').textContent = mobile;
+      document.getElementById('previewEmail').textContent = email;
+      document.getElementById('previewBloodGroup').textContent = bloodGroup;
+  
+      // Display the image
+      const previewImage = document.getElementById('previewImage');
+      previewImage.src = imageDataUrl;
+      previewImage.style.maxWidth = '100%'; // Adjust the styling as needed
+    });
+  </script>
+  
+</body>
+
+</html>

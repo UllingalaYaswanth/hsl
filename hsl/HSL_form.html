@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSL</title>
+  <link rel="stylesheet" href="../styles/HSL_form.css">
+</head>
+
+<body>
+  <header>
+    <div id="header-bar">
+      <div id="logo">
+        <img src="../hsl-logo.png" alt="Logo">
+        <div id="app-name">HINDUSTAN SHIPYARD LIMITED</div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <form id="registration-form" action="../api/hsl_form.php" method="post">
+      <h1 class="h1">Employee Registration Form</h1>
+
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="first_name" value="" required><br><br>
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="last_name" value="" required><br><br>
+
+      <label for="dsgn">Designation:</label>
+      <input type="text" id="dsgn" name="dsgn" value="" required><br><br>
+
+      <label for="pass">Pass Number:</label>
+      <input type="text" id="pass" name="pass"><br><br>
+
+      <label for="validity">Pass Validity:</label>
+      <input type="date" id="validity" name="validity"><br><br>
+
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" value=""></textarea><br><br>
+
+      <label for="firm">Firm Name / Department:</label>
+      <input type="text" id="firm" name="firm" value=""><br><br>
+
+      <label for="nok">NOK Contact Number:</label>
+      <input type="text" id="nok" name="nok" value=""><br><br>
+
+      <label for="mobile">Site In-Charge Contact Number:</label>
+      <input type="text" id="mobile" name="mobile" value=""><br><br>
+
+      <label for="bloodGroup">Blood Group:</label>
+      <select id="bloodGroup" name="blood_group">
+        <option value="">Select Blood Group</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+      </select><br><br>
+
+      <div class="image-container">
+        <img src="" id="display-image">
+
+        <label for="image-upload">Upload Image:</label>
+        <input type="file" id="image-upload" name="image" accept="image/*" capture="camera">
+
+        <!-- Button to show the camera feed -->
+        <button type="button" id="show-camera-button">Capture Photo</button>
+
+        <!-- Video element to display the camera feed -->
+        <div id="camera-overlay">
+          <video id="camera-feed"></video>
+
+          <!-- Capture buttons -->
+          <div id="capture-buttons">
+            <button type="button" onclick="captureAndUpload()">Capture and Upload</button>
+            <button type="button" onclick="hideCameraOverlay()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        // Your existing JavaScript code goes here
+        const imgInput = document.querySelector('#image-upload');
+        const displayImg = document.querySelector('#display-image');
+        const showCameraButton = document.querySelector('#show-camera-button');
+        const cameraOverlay = document.querySelector('#camera-overlay');
+        const cameraFeed = document.querySelector('#camera-feed');
+
+        imgInput.addEventListener('change', (e) => {
+          displayImg.src = URL.createObjectURL(e.target.files[0]);
+        });
+
+        // Event listener for showing the camera feed
+        showCameraButton.addEventListener('click', () => {
+          // Show the camera overlay
+          cameraOverlay.style.display = 'block';
+
+          const constraints = { video: true };
+
+          navigator.mediaDevices.getUserMedia(constraints)
+            .then((stream) => {
+              // Display the camera feed in the video element
+              cameraFeed.srcObject = stream;
+              cameraFeed.play();
+            })
+            .catch((error) => {
+              console.error('Error accessing camera:', error);
+              // Hide the camera overlay if there's an error
+              cameraOverlay.style.display = 'none';
+            });
+        });
+
+        // Function to capture and upload the image
+        function captureAndUpload() {
+          const canvas = document.createElement('canvas');
+          canvas.width = cameraFeed.videoWidth;
+          canvas.height = cameraFeed.videoHeight;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(cameraFeed, 0, 0, canvas.width, canvas.height);
+
+          // Convert the captured frame to a data URL
+          const dataURL = canvas.toDataURL('image/png');
+
+          // Set the data URL as the source for the display image
+          displayImg.src = dataURL;
+
+          // Hide the camera overlay and stop the video stream
+          hideCameraOverlay();
+        }
+
+        // Function to hide the camera overlay
+        function hideCameraOverlay() {
+          // Hide the camera overlay and stop the video stream
+          cameraOverlay.style.display = 'none';
+          if (cameraFeed.srcObject) {
+            const tracks = cameraFeed.srcObject.getTracks();
+            tracks.forEach(track => track.stop());
+            cameraFeed.srcObject = null;
+          }
+        }
+      </script>
+
+      <input type="submit" value="Register" onclick="generateqr()">
+      <button type="button" id="previewButton" onclick="previewForm()">Preview</button>
+
+      <script>
+        function validateForm() {
+          const firstName = document.getElementById('firstName').value;
+          const lastName = document.getElementById('lastName').value;
+          const empId = document.getElementById('empId').value;
+          const dept = document.getElementById('dept').value;
+          const aadhar = document.getElementById('aadhar').value;
+          const address = document.getElementById('address').value;
+          const gender = document.querySelector('input[name="gender"]:checked');
+          const dob = document.getElementById('dob').value;
+          const mobile = document.getElementById('mobile').value;
+          const email = document.getElementById('email').value;
+          const bloodGroup = document.getElementById('bloodGroup').value;
+
+          if (mobile.length !== 10 || isNaN(mobile)) {
+            alert("Mobile number should be 10 digits.");
+            return false;
+          }
+
+          const dobDate = new Date(dob);
+          const currentDate = new Date();
+
+          return true;  // If all conditions pass, the form is considered valid
+        }
+
+
+        function hideCameraOverlay() {
+          const cameraOverlay = document.querySelector('#camera-overlay');
+          const cameraFeed = document.querySelector('#camera-feed');
+
+          // Hide the camera overlay and stop the video stream
+          cameraOverlay.style.display = 'none';
+          if (cameraFeed.srcObject) {
+            const tracks = cameraFeed.srcObject.getTracks();
+            tracks.forEach(track => track.stop());
+            cameraFeed.srcObject = null;
+          }
+        }
+      </script>
+
+      <div id="qrcode" class="qr"></div>
+    </form>
+
+    <script>
+      const form = document.getElementById('registration-form');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+      });
+    </script>
+
+  </section>
+
+  <script>
+    function generateqr() {
+      console.log("generate QR code called");
+      console.log("Form is valid");
+      var firstName = document.getElementById('firstName').value;
+      var lastName = document.getElementById('lastName').value;
+      var dsgn = document.getElementById('dsgn').value;
+      var pass = document.getElementById('pass').value;
+      var validity = document.getElementById('validity').value;
+      var address = document.getElementById('address').value;
+      var firm = document.getElementById('firm').value;
+      var nok = document.getElementById('nok').value;
+      var mobile = document.getElementById('mobile').value;
+      var bloodGroup = document.getElementById('bloodGroup').value;
+      var image = document.getElementById('image-upload').value;
+
+      console.log('First Name: ' + firstName);
+      console.log('Last Name: ' + lastName);
+      console.log('Designation: ' + dsgn);
+      console.log('Pass Number: ' + pass);
+      console.log('Address: ' + address);
+      console.log('Pass Validity: ' + validity);
+      console.log('Firm Name/Department: ' + firm)
+      console.log('NOK Contact Number: ' + nok);
+      console.log('Site In-Charge Contact Number: ' + mobile);
+      console.log('BloodGroup: ' + bloodGroup);
+      console.log('image-upload: ' + image);
+
+      var url = "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=First%20Name:%20" + firstName + "%0ALast%20Name:%20" + lastName +
+        "%0ADesignation:%20" + dsgn + "%0APass Number:%20" + pass +
+        "%0A%20Pass Validity: %20" + validity + "%0Address:%20" + address +
+        "%0AFirm Name/Department:%20" + firm + "%0ANOK Contact Number:%20" + nok +
+        "%0ASite In-Charge Contact Number:%20" + mobile + "%0ABlood Group :%20" + bloodGroup +
+        "%0AImage:%20" + image;
+      // var ifr = `<iframe src="${url}"height="200" width="200"></iframe>`;
+      // document.getElementById('qrcode').innerHTML = ifr;
+      var redirectURL = 'qr.html?qrcode=' + encodeURIComponent(url);
+
+      // Redirect to another_page.html with the QR code data as a query parameter
+      window.location.href = redirectURL;
+
+
+    }
+  </script>
+  <script>
+    function previewForm() {
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const empId = document.getElementById('empId').value;
+      const department = document.getElementById('dept').value;
+      const aadhar = document.getElementById('aadhar').value;
+      const address = document.getElementById('address').value;
+      const gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '';
+      const dob = document.getElementById('dob').value;
+      const mobile = document.getElementById('mobile').value;
+      const email = document.getElementById('email').value;
+      const bloodGroup = document.getElementById('bloodGroup').value;
+
+      // Retrieve image data
+      const imageDataUrl = document.getElementById('display-image').src;
+
+      // Construct the URL with query parameters
+      const previewURL = `preview.html?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}&empId=${encodeURIComponent(empId)}
+      &department=${encodeURIComponent(department)}&aadhar=${encodeURIComponent(aadhar)}&address=${encodeURIComponent(address)}
+      &gender=${encodeURIComponent(gender)}&dob=${encodeURIComponent(dob)}&mobile=${encodeURIComponent(mobile)}&email=${encodeURIComponent(email)}
+      &bloodGroup=${encodeURIComponent(bloodGroup)}&image=${encodeURIComponent(imageDataUrl)}`;
+
+      window.location.href = previewURL;
+    }
+  </script>
+
+</body>
+
+</html>
